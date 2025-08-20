@@ -1,0 +1,27 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'
+      - name: Flutter analyze & test
+        run: |
+          cd app
+          flutter pub get
+          flutter analyze
+          flutter test
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno test -A
+        working-directory: supabase/functions
+      - name: SQL lint
+        run: |
+          pip install sqlfluff
+          sqlfluff lint supabase/migrations/*.sql
