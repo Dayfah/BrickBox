@@ -1,0 +1,15 @@
+{
+  "name": "brickbox-worker",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241004.0",
+    "typescript": "^5.5.4",
+    "wrangler": "^3.74.0"
+  }
+}

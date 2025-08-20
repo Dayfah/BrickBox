@@ -1,0 +1,43 @@
+name: Workers Builds: brickbox
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'workers/**'
+      - '.github/workflows/workers.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'workers/**'
+      - '.github/workflows/workers.yml'
+
+jobs:
+  build-deploy:
+    # Skip PRs from forks (no secrets)
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workers
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with: { version: 9 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Deploy (main only)
+        if: github.ref == 'refs/heads/main'
+        run: pnpm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

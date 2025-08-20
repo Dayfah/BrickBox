@@ -1,0 +1,14 @@
+name = "brickbox"
+main = "dist/index.js"
+compatibility_date = "2025-08-01"
+
+# Add a route only if you want it on your domain; otherwise use workers.dev
+# routes = [{ pattern = "api.yourdomain.com/*", zone_id = "$CF_ZONE_ID" }]
+
+[vars]
+# Optional app vars, or bind secrets via dashboard/CLI
+# SUPABASE_URL = ""
+# SUPABASE_ANON_KEY = ""
+
+[build]
+command = "pnpm -v || npm -v"  # no-op to satisfy CF build if needed
