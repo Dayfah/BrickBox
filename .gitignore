@@ -1,0 +1,12 @@
+# Generated files
+assets/brickbox-icon.png
+
+# Flutter
+app/.dart_tool/
+app/.packages
+app/build/
+app/ios/
+app/android/
+
+# Supabase
+supabase/.env
