@@ -1,12 +1,45 @@
 # Generated files
 assets/brickbox-icon.png
+# Generated files
+assets/brickbox-icon.png
 
-# Flutter
-app/.dart_tool/
-app/.packages
-app/build/
-app/ios/
-app/android/
+# Dart/Flutter
+.dart_tool/
+.packages
+.pub-cache/
+build/
+flutter_export_environment.sh
 
-# Supabase
+# iOS
+ios/Flutter/.last_build_id
+**/DerivedData/
+*.ipa
+
+# Android
+.android/
+.gradle/
+**/local.properties
+**/*.keystore
+**/*.jks
+*.apk
+*.aab
+
+# VS Code / IDEs
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Env / Secrets
+.env
+.env.local
+.env.*
 supabase/.env
+supabase/.env.local
+
+# Supabase CLI cache
+supabase/.temp/
+supabase/.branches/
+ main
