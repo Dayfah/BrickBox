@@ -1,2 +1,4 @@
 # Generated files
 app/icon.png
+node_modules/
+**/__pycache__/

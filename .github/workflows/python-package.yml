@@ -32,6 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f backend/requirements.txt ]; then pip install -r backend/requirements.txt; fi
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -40,11 +41,12 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest
+          pytest tests
+          cd backend && pytest
 
   node:
     runs-on: ubuntu-latest
-    if: hashFiles('**/package.json') != ''
+    if: hashFiles('frontend/package.json') != ''
     strategy:
       matrix:
         node-version: ["18", "20"]
@@ -55,7 +57,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
+          cache-dependency-path: frontend/package-lock.json
       - name: Install dependencies
+        working-directory: frontend
         run: |
           if [ -f package-lock.json ]; then
             npm ci
@@ -63,4 +67,5 @@ jobs:
             npm install
           fi
       - name: Test
+        working-directory: frontend
         run: npm test
