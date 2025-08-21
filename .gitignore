@@ -1,2 +1,17 @@
 # Generated files
 app/icon.png
+
+# Dependencies and build outputs
+node_modules/
+dist/
+.venv/
+
+# Python caches
+__pycache__/
+
+# Environment files
+.env
+
+# IDE files
+.vscode/
+.idea/
