@@ -6,3 +6,8 @@ The visual identity uses the base64-encoded icon in `assets/brickbox-icon.b64`. 
 
 ## Tech Stack Overview
 See [STACK.md](STACK.md) for the MVP tooling and the path to scale.
+
+## Local Development
+1. Copy `.env.example` to `.env`.
+2. Add your Supabase project URL and anonymous key to `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+3. The `.env` file is ignored by git and used by the Supabase client in `src/lib/supabaseClient.ts`.
