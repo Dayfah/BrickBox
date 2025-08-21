@@ -1,2 +1,5 @@
 # Generated files
 assets/brickbox-icon.png
+
+# Local development environment variables
+.env
