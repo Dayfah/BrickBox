@@ -6,3 +6,7 @@ The visual identity uses the base64-encoded icon in `assets/brickbox-icon.b64`. 
 
 ## Tech Stack Overview
 See [STACK.md](STACK.md) for the MVP tooling and the path to scale.
+
+## License
+
+BrickBox is released under the [MIT License](LICENSE).
