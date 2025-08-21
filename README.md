@@ -7,6 +7,15 @@ The visual identity uses the base64-encoded icon in `assets/brickbox-icon.b64`. 
 ## Tech Stack Overview
 See [STACK.md](STACK.md) for the MVP tooling and the path to scale.
 
+## Docker
+
+Build the multi-stage image and run the server locally:
+
+```sh
+docker build -t brickbox .
+docker run --rm -p 3000:3000 brickbox
+```
+
 ## License
 
 BrickBox is released under the [MIT License](LICENSE).
