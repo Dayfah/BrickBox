@@ -1,5 +1,8 @@
-import React from 'react';
-
 export default function Home() {
-  return <div>Hello, world!</div>;
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>BrickBox</h1>
+      <p>Comic/Manga Collector hub — coming soon 🚀</p>
+    </main>
+  );
 }
