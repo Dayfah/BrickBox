@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrickBox — Boost Claim</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Claim Your BrickBox Boost</h1>
+    <p>Send <strong id="price"></strong> BBX to <code id="treasury"></code> (BBX mint: <code id="mint"></code>), then paste your transaction signature below.</p>
+
+    <form id="f">
+      <label>Wallet Address (optional)</label>
+      <input name="wallet" placeholder="Your Phantom wallet (optional)" />
+      <label>Transaction Signature</label>
+      <input name="signature" placeholder="Paste from Phantom / Solana Explorer" required />
+      <label>Link to Your Content/Listing</label>
+      <input name="link" placeholder="URL to feature" required />
+      <button type="submit">Submit Claim</button>
+    </form>
+
+    <pre id="out"></pre>
+  </main>
+
+  <script>
+    const env = {
+      price: Number("{{MIN_BBX}}".replace("{{MIN_BBX}}", "MIN_BBX")).toString() // placeholder
+    };
+  </script>
+  <script>
+    // Inject live values from server via a tiny endpoint if needed. For now, read from HTML data attrs.
+    fetch("/env.json").catch(()=>{}); // optional future use
+
+    // Basic UI fill from server .env (we'll embed using server injection if desired)
+    document.getElementById("price").innerText = (new URLSearchParams(window.location.search)).get("price") || "25";
+    document.getElementById("treasury").innerText = "PASTE_YOUR_TREASURY_ADDRESS";
+    document.getElementById("mint").innerText = "PASTE_YOUR_MAINNET_MINT";
+
+    const form = document.getElementById("f");
+    const out = document.getElementById("out");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      out.textContent = "Checking transaction on Solana…";
+      const data = Object.fromEntries(new FormData(form).entries());
+      const r = await fetch("/claim", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) });
+      const j = await r.json();
+      out.textContent = JSON.stringify(j, null, 2);
+      if (j.ok) out.textContent += "\n✅ Verified! You’re in the boost queue.";
+    });
+  </script>
+</body>
+</html>
