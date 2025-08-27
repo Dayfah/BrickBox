@@ -1,2 +1,3 @@
 @echo off
-powershell -ExecutionPolicy Bypass -File "%~dp0run_bbx_setup.ps1" %*
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\scripts\bbx_setup.ps1"
+pause
