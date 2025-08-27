@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import './globals.css';
+import { bbxMetadata } from './token/metadata';
 
 export const metadata = {
   title: 'BrickBox',
@@ -23,7 +24,13 @@ export default function RootLayout({
           }}
         >
           <Link href="/">Home</Link>
-          <Link href="/token">Token</Link>
+          <a
+            href={bbxMetadata.external_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Token
+          </a>
           <Link href="/social">Social</Link>
           <a
             href="https://brickbox.printify.me/"
