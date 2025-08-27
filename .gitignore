@@ -4,6 +4,7 @@ app/icon.png
 # Dependencies and build outputs
 node_modules/
 dist/
+.next/
 .venv/
 
 # Python caches
