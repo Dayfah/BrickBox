@@ -6,6 +6,10 @@ export const metadata = {
 };
 
 export default function TokenPage() {
+  const tokenUrl = bbxMetadata.external_url.startsWith('http')
+    ? bbxMetadata.external_url
+    : `https://${bbxMetadata.external_url}`;
+
   return (
     <main style={{ padding: 24 }}>
       <h1>
@@ -21,11 +25,11 @@ export default function TokenPage() {
       </p>
       <p>
         <a
-          href={bbxMetadata.external_url}
+          href={tokenUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {bbxMetadata.external_url}
+          {tokenUrl}
         </a>
       </p>
       <h2>Attributes</h2>
