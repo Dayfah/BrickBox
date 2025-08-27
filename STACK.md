@@ -12,7 +12,7 @@ This document outlines the concrete tools and services to make BrickBox real.  I
 ### App Frontend
 - **Mobile** – React Native via Expo for rapid iteration, OTA updates, push and camera access.
 - **UI kit** – Tamagui or React Native Paper styled with the BrickBox palette.
-- **Web** – Optional marketing and read‑only feed using Next.js on Vercel.
+- **Web** – Optional marketing and read‑only feed using Next.js on Vercel, linking to the [TikTok profile](https://www.tiktok.com/@dayfaa?_t=ZP-8zDjhuOz98p&_r=1).
 
 ### Backend & Data
 - **Primary backend** – Supabase (Postgres, Auth, RLS, Storage, Realtime).
@@ -121,4 +121,4 @@ This document outlines the concrete tools and services to make BrickBox real.  I
 - **Automation** – n8n (cloud) + Telegram Bot API.
 - **Security** – Cloudflare (DNS/WAF), Doppler (secrets).
 - **Docs/PM** – Notion + Linear.
-- **Marketing site** – Next.js on Vercel.
+- **Marketing site** – Next.js on Vercel with a link to the [TikTok profile](https://www.tiktok.com/@dayfaa?_t=ZP-8zDjhuOz98p&_r=1).
