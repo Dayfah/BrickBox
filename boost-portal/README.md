@@ -7,7 +7,7 @@ Verifies a Solana transaction that transfers >= MIN_BBX of the BBX mint to your 
    - MINT_ADDRESS (your BBX mainnet mint)
    - TREASURY_ADDRESS (your treasury wallet)
    - MIN_BBX (e.g., 25), DECIMALS=9
-   - (optional) SUPABASE_URL + SUPABASE_ANON_KEY to log claims
+   - (optional) SUPABASE_URL or SUPABASE_PROJECT_URL plus SUPABASE_ANON_KEY and SUPABASE_SERVICE_KEY to log claims
 2) Install & run:
    ```bash
    cd boost-portal
