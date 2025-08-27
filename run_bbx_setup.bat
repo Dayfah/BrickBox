@@ -1,3 +1,2 @@
 @echo off
-REM Decode BrickBox icon into app\icon.png
-python scripts\decode_icon.py
+powershell -ExecutionPolicy Bypass -File "%~dp0run_bbx_setup.ps1" %*
