@@ -1,0 +1,12 @@
+name = "bbx-boost-portal"
+main = "server.js"
+compatibility_date = "2024-07-01"
+
+[vars]
+RPC_URL = "https://api.mainnet-beta.solana.com"
+MINT_ADDRESS = "<YOUR_MINT_ADDRESS>"
+TREASURY_ADDRESS = "<YOUR_TREASURY_ADDRESS>"
+MIN_BBX = "25"
+DECIMALS = "9"
+SUPABASE_URL = "<YOUR_SUPABASE_URL>"
+SUPABASE_ANON_KEY = "<YOUR_SUPABASE_ANON_KEY>"
