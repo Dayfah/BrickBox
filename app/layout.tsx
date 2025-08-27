@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import './globals.css';
 
 export const metadata = {
   title: 'BrickBox',
@@ -13,7 +14,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav style={{ display: 'flex', gap: 16, padding: 16 }}>
+        <nav
+          style={{
+            display: 'flex',
+            gap: 16,
+            padding: 16,
+            backgroundColor: '#1f1f1f',
+          }}
+        >
           <Link href="/">Home</Link>
           <Link href="/token">Token</Link>
           <Link href="/social">Social</Link>
