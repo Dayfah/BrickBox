@@ -32,13 +32,8 @@ export default function RootLayout({
             Token
           </a>
           <Link href="/social">Social</Link>
-          <a
-            href="https://brickbox.printify.me/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Shop
-          </a>
+          <Link href="/perks">Perks</Link>
+          <Link href="/shop">Shop</Link>
         </nav>
         {children}
       </body>
