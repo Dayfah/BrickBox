@@ -28,7 +28,7 @@ export default function SocialPage() {
         </li>
         <li>
           <a
-            href="https://www.tiktok.com/@dayfah"
+            href="https://www.tiktok.com/@dayfaa?_t=ZP-8zDjhuOz98p&_r=1"
             target="_blank"
             rel="noopener noreferrer"
           >
