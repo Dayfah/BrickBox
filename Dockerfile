@@ -20,12 +20,12 @@ COPY . .
 RUN if [ -f package.json ]; then npm ci && npm run build; else echo "No package.json, skipping frontend build"; fi
 
 # --- Runtime stage --------------------------------------------------------
-FROM python:3.11-slim
-WORKDIR /srv
+FROM node:20-alpine
+WORKDIR /app
 
 # Bring in backend files and built frontend assets
 COPY --from=backend /srv /srv
-COPY --from=frontend /app/.next ./app/.next
+COPY --from=frontend /app ./
 
 EXPOSE 3000
-CMD ["python", "-m", "http.server", "3000"]
+CMD ["npm", "start"]
