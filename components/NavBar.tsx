@@ -15,6 +15,8 @@ export default function NavBar() {
         <li><Link href="/token">Token</Link></li>
         <li><Link href="/products">Store</Link></li>
         <li><Link href="/pricing">Pricing</Link></li>
+        <li><Link href="/wallet">Wallet</Link></li>
+        <li><Link href="/account">Account</Link></li>
         <li><Link href="/contact">Contact</Link></li>
         <li><Link href="/legal/terms">Terms</Link></li>
         <li><Link href="/legal/privacy">Privacy</Link></li>
