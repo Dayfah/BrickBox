@@ -5,8 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2023-10
 
 export async function POST(req: Request) {
   try {
-    const { plan } = await req.json();
-    if (!plan || !["monthly","yearly"].includes(plan)) {
+    const { plan, email } = await req.json();
+    if (!plan || !["monthly", "yearly"].includes(plan)) {
       return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
     }
 
@@ -20,7 +20,8 @@ export async function POST(req: Request) {
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${siteUrl}/success`,
       cancel_url: `${siteUrl}/cancel`,
-      allow_promotion_codes: true
+      allow_promotion_codes: true,
+      ...(email ? { customer_email: email } : {}),
     });
 
     return NextResponse.json({ url: session.url }, { status: 200 });
