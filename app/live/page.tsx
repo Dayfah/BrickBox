@@ -1,6 +1,12 @@
 "use client";
 
 export default function LivePage() {
+  const host =
+    typeof window !== 'undefined'
+      ? window.location.hostname
+      : process.env.NEXT_PUBLIC_VERCEL_URL || 'localhost';
+  const twitchSrc = `https://player.twitch.tv/?channel=dayfah&parent=${host}`;
+
   return (
     <section style={{ padding: '20px' }}>
       <h1 style={{ fontSize: '32px', marginBottom: '16px' }}>Live Streams</h1>
@@ -18,7 +24,7 @@ export default function LivePage() {
           overflow: 'hidden',
         }}>
           <iframe
-            src="https://player.twitch.tv/?channel=dayfah&parent=brickbox.vercel.app"
+            src={twitchSrc}
             allowFullScreen
             style={{
               position: 'absolute',
