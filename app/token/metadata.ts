@@ -1,6 +1,7 @@
 export const bbxMetadata = {
   name: 'BrickBox Token',
   symbol: 'BBX',
+  mint: 'C2zw5LJuJu6jpf84325zrGARwrarN8SrCTg5E12FNg3A',
   description:
     'Utility token of BrickBox — boosts, discounts, gating, and tips across BrickBox apps and partner shops.',
   image:
