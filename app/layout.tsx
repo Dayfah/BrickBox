@@ -1,40 +1,13 @@
-import Link from 'next/link';
 import './globals.css';
-import { bbxMetadata } from './token/metadata';
+import NavBar from '@/components/NavBar';
 
-export const metadata = {
-  title: 'BrickBox',
-  description: 'Comic/Manga Collector hub — coming soon 🚀',
-};
+export const metadata = { title: 'BrickBox' };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <nav
-          style={{
-            display: 'flex',
-            gap: 16,
-            padding: 16,
-            backgroundColor: '#1f1f1f',
-          }}
-        >
-          <Link href="/">Home</Link>
-          <a
-            href={bbxMetadata.external_url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Token
-          </a>
-          <Link href="/social">Social</Link>
-          <Link href="/perks">Perks</Link>
-          <Link href="/shop">Shop</Link>
-        </nav>
+        <NavBar />
         {children}
       </body>
     </html>
