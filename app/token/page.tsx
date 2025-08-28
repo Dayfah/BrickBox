@@ -1,57 +1,40 @@
-"use client";
+const MINT = process.env.NEXT_PUBLIC_BBX_MINT;
+const LOGO_URL = process.env.NEXT_PUBLIC_BBX_LOGO_URL;
 
-import { useState } from 'react';
-import { PhantomConnect } from '../../components/wallet/PhantomConnect';
-import { bbxMetadata } from './metadata';
-
-export default function TokenPage() {
-  const [pubkey, setPubkey] = useState<string | null>(null);
-  const mint = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT || bbxMetadata.mint;
-  const buyUrl = `https://jup.ag/swap/SOL-${mint}`;
-
+export default function BBXTokenPage() {
   return (
-    <main style={{ padding: 24 }}>
-      <h1>
-        {bbxMetadata.name} ({bbxMetadata.symbol})
-      </h1>
-      <div style={{ margin: '16px 0' }}>
-        <PhantomConnect onConnected={setPubkey} />
-      </div>
-      {pubkey && (
-        <p>Connected wallet: {pubkey}</p>
+    <section style={{padding:"20px"}}>
+      <h1 style={{fontSize:"32px", marginBottom:"4px"}}>BBX — BrickBox Token</h1>
+      <p style={{opacity:.85, marginBottom:"16px"}}>
+        Utility token for the BrickBox ecosystem.
+      </p>
+
+      {LOGO_URL && (
+        <img
+          src={LOGO_URL}
+          alt="BBX"
+          style={{height:"80px", width:"80px", borderRadius:"12px", marginBottom:"16px"}}
+        />
       )}
-      <p>{bbxMetadata.description}</p>
-      {buyUrl && (
-        <p>
-          <a href={buyUrl} target="_blank" rel="noopener noreferrer">
-            Buy {bbxMetadata.symbol}
+
+      <h3 style={{marginTop:"8px"}}>Mint Address</h3>
+      <code style={{display:"block", wordBreak:"break-all"}}>
+        {MINT ?? "Set NEXT_PUBLIC_BBX_MINT in Vercel → Settings → Environment Variables"}
+      </code>
+
+      {MINT && (
+        <p style={{marginTop:"12px"}}>
+          <a href={`https://solscan.io/token/${MINT}`} target="_blank">
+            View on Solscan ↗
           </a>
         </p>
       )}
-      <p>
-        <img
-          src={bbxMetadata.image}
-          alt={bbxMetadata.name}
-          style={{ maxWidth: 200 }}
-        />
-      </p>
-      <p>
-        <a
-          href={bbxMetadata.external_url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {bbxMetadata.external_url}
-        </a>
-      </p>
-      <h2>Attributes</h2>
-      <ul>
-        {bbxMetadata.attributes.map((attr) => (
-          <li key={attr.trait_type}>
-            <strong>{attr.trait_type}:</strong> {attr.value}
-          </li>
-        ))}
-      </ul>
-    </main>
+
+      <h3 style={{marginTop:"24px"}}>Add BBX in Phantom</h3>
+      <ol>
+        <li>Open Phantom → Tokens → Add / Manage → Add custom token</li>
+        <li>Paste the Mint Address above → Save</li>
+      </ol>
+    </section>
   );
 }
