@@ -1,4 +1,5 @@
 import { bbxMetadata } from './metadata';
+import Subscribe from '../../components/Subscribe';
 
 export const metadata = {
   title: 'BBX Token',
@@ -7,7 +8,7 @@ export const metadata = {
 
 export default function TokenPage() {
   return (
-    <main style={{ padding: 24 }}>
+    <main className="token-page">
       <h1>
         {bbxMetadata.name} ({bbxMetadata.symbol})
       </h1>
@@ -16,7 +17,7 @@ export default function TokenPage() {
         <img
           src={bbxMetadata.image}
           alt={bbxMetadata.name}
-          style={{ maxWidth: 200 }}
+          className="token-image"
         />
       </p>
       <p>
@@ -36,6 +37,7 @@ export default function TokenPage() {
           </li>
         ))}
       </ul>
+      <Subscribe />
     </main>
   );
 }

@@ -18,3 +18,18 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+
+.main-nav {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background-color: #1f1f1f;
+}
+
+.token-page {
+  padding: 24px;
+}
+
+.token-image {
+  max-width: 200px;
+}
