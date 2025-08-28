@@ -1,10 +1,9 @@
 /**
  * BrickBox Cloudflare Worker
  * - Receives Stripe webhooks
- * - Verifies signature
+ * - Manually verifies signature
  * - Writes subscription status to Supabase
  */
-import Stripe from 'stripe';
 
 export default {
   async fetch(request, env, ctx) {
@@ -16,8 +15,8 @@ export default {
     const payload = await request.text();
 
     try {
-      const stripe = new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: '2024-06-20' });
-      const event = stripe.webhooks.constructEvent(payload, sig, env.STRIPE_WEBHOOK_SECRET);
+      await verifyStripeSignature(payload, sig, env.STRIPE_WEBHOOK_SECRET);
+      const event = JSON.parse(payload);
 
       if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
@@ -33,6 +32,47 @@ export default {
       return new Response('Invalid signature or error: ' + (err && err.message ? err.message : ''), { status: 400 });
     }
   }
+}
+
+function parseStripeSignature(header) {
+  const parts = header.split(',');
+  const timestampPart = parts.find(p => p.startsWith('t='));
+  const sigPart = parts.find(p => p.startsWith('v1='));
+  if (!timestampPart || !sigPart) {
+    throw new Error('Invalid Stripe signature header');
+  }
+  return {
+    timestamp: timestampPart.slice(2),
+    signature: sigPart.slice(3)
+  };
+}
+
+async function verifyStripeSignature(payload, header, secret) {
+  const { timestamp, signature } = parseStripeSignature(header);
+  const encoder = new TextEncoder();
+  const data = encoder.encode(`${timestamp}.${payload}`);
+  const key = await crypto.subtle.importKey(
+    'raw',
+    encoder.encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  const signed = await crypto.subtle.sign('HMAC', key, data);
+  const expected = Array.from(new Uint8Array(signed)).map(b => b.toString(16).padStart(2, '0')).join('');
+  if (!timingSafeEqual(expected, signature)) {
+    throw new Error('Invalid signature');
+  }
+}
+
+function timingSafeEqual(a, b) {
+  const len = a.length;
+  if (len !== b.length) return false;
+  let result = 0;
+  for (let i = 0; i < len; i++) {
+    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return result === 0;
 }
 
 async function upsertSubscriptionFromSession(session, env) {
