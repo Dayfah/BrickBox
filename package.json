@@ -6,13 +6,15 @@
     "test": "node --test",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@solana/web3.js": "1.95.3",
     "next": "^15.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@solana/web3.js": "1.95.3"
+    "stripe": "^18.5.0"
   },
   "devDependencies": {
     "@types/node": "24.3.0",

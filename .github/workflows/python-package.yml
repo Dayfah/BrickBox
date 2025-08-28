@@ -62,5 +62,7 @@ jobs:
           else
             npm install
           fi
+      - name: Typecheck
+        run: npm run typecheck
       - name: Test
         run: npm test

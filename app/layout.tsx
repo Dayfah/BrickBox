@@ -15,14 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav
-          style={{
-            display: 'flex',
-            gap: 16,
-            padding: 16,
-            backgroundColor: '#1f1f1f',
-          }}
-        >
+        <nav className="main-nav">
           <Link href="/">Home</Link>
           <a
             href={bbxMetadata.external_url}
