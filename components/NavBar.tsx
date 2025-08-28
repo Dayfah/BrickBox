@@ -14,6 +14,7 @@ export default function NavBar() {
       <Link href="/">Home</Link>
       <Link href="/token">Token</Link>
       <Link href="/social">Social</Link>
+      <Link href="/live">Live</Link>
       <a href="https://brickbox.printify.me/" target="_blank" rel="noopener noreferrer">
         Shop
       </a>
