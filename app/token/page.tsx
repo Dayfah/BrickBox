@@ -1,57 +1,39 @@
-"use client";
-
-import { useState } from 'react';
-import { PhantomConnect } from '../../components/wallet/PhantomConnect';
-import { bbxMetadata } from './metadata';
+import React from 'react';
 
 export default function TokenPage() {
-  const [pubkey, setPubkey] = useState<string | null>(null);
-  const mint = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT || bbxMetadata.mint;
-  const buyUrl = `https://jup.ag/swap/SOL-${mint}`;
+  const logo = process.env.NEXT_PUBLIC_BBX_LOGO_URL;
+  const mint = process.env.NEXT_PUBLIC_BBX_MINT;
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1>
-        {bbxMetadata.name} ({bbxMetadata.symbol})
-      </h1>
-      <div style={{ margin: '16px 0' }}>
-        <PhantomConnect onConnected={setPubkey} />
-      </div>
-      {pubkey && (
-        <p>Connected wallet: {pubkey}</p>
-      )}
-      <p>{bbxMetadata.description}</p>
-      {buyUrl && (
+    <div className="card" style={{ padding: 24 }}>
+      <h2>BBX Token (Coming Soon)</h2>
+      <p>We’ll use this token to unlock community perks inside BrickBox.</p>
+      {logo && (
         <p>
-          <a href={buyUrl} target="_blank" rel="noopener noreferrer">
-            Buy {bbxMetadata.symbol}
-          </a>
+          <img className="token-logo" src={logo} alt="BBX logo" style={{ maxWidth: 200 }} />
         </p>
       )}
-      <p>
-        <img
-          src={bbxMetadata.image}
-          alt={bbxMetadata.name}
-          style={{ maxWidth: 200 }}
-        />
-      </p>
-      <p>
-        <a
-          href={bbxMetadata.external_url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {bbxMetadata.external_url}
-        </a>
-      </p>
-      <h2>Attributes</h2>
-      <ul>
-        {bbxMetadata.attributes.map((attr) => (
-          <li key={attr.trait_type}>
-            <strong>{attr.trait_type}:</strong> {attr.value}
-          </li>
-        ))}
-      </ul>
-    </main>
+      {mint && (
+        <div style={{ marginTop: 16 }}>
+          <div className="small">Mint address: <code>{mint}</code></div>
+          <div className="small">
+            <a
+              href={`https://solscan.io/token/${mint}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on Solscan
+            </a>
+          </div>
+        </div>
+      )}
+      <hr />
+      <ol>
+        <li>Open Phantom wallet.</li>
+        <li>Tap the "+" icon and choose "Add / Connect Token".</li>
+        <li>Paste the mint address and confirm.</li>
+      </ol>
+    </div>
   );
 }
+
