@@ -76,6 +76,9 @@ export default function PricingPage(){
       </div>
 
       <RefundNote />
+      <div className="text-center">
+        <a href="/account" className="underline opacity-90">Already subscribed? Manage billing</a>
+      </div>
       <p className="text-xs opacity-70 text-center">
         By subscribing you agree to our <a className="underline" href="/legal/terms">Terms</a> and <a className="underline" href="/legal/privacy">Privacy Policy</a>.
       </p>
