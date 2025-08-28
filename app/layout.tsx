@@ -1,9 +1,9 @@
 import './globals.css';
-import NavBar from '@/components/NavBar';
+import NavBar from '../components/NavBar';
 
 export const metadata = {
-  title: 'BBX',
-  description: 'BBX token coming soon 🚀',
+  title: 'BrickBox',
+  description: 'Comic/Manga Collector hub — coming soon 🚀',
 };
 
 export default function RootLayout({
