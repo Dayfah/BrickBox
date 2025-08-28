@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { PhantomConnect } from '../../components/wallet/PhantomConnect';
 import { hasMint } from '../../lib/solana';
+import { bbxMetadata } from '../token/metadata';
 
-const MINT = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT || '';
+const MINT = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT || bbxMetadata.mint;
 
 export default function PerksPage() {
   const [pubkey, setPubkey] = useState<string | null>(null);
@@ -27,7 +28,6 @@ export default function PerksPage() {
   return (
     <div className="card">
       <h2>Perks (Token-gated)</h2>
-      {!MINT && <div className="small">Set <code>NEXT_PUBLIC_BRICK_TOKEN_MINT</code> in Vercel env to enable holder checks.</div>}
       <div style={{display:'flex', gap:12, alignItems:'center', marginTop: 8}}>
         <PhantomConnect onConnected={onConnected} />
       </div>

@@ -6,10 +6,8 @@ import { bbxMetadata } from './metadata';
 
 export default function TokenPage() {
   const [pubkey, setPubkey] = useState<string | null>(null);
-  const mint = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT;
-  const buyUrl = mint
-    ? `https://jup.ag/swap/SOL-${mint}`
-    : bbxMetadata.external_url;
+  const mint = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT || bbxMetadata.mint;
+  const buyUrl = `https://jup.ag/swap/SOL-${mint}`;
 
   return (
     <main style={{ padding: 24 }}>
