@@ -1,12 +1,8 @@
 export default function Home() {
   return (
     <main style={{ padding: 24 }}>
-      <h1>BrickBox</h1>
-      <p>Comic/Manga Collector hub — coming soon 🚀</p>
-      <p>
-        Use the navigation above to visit the shop, view the BBX token, or
-        connect on social media.
-      </p>
+      <h1>BBX</h1>
+      <p>Coming soon 🚀</p>
     </main>
   );
 }
