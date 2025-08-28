@@ -5,7 +5,7 @@ import { PhantomConnect } from '../../components/wallet/PhantomConnect';
 import { hasMint } from '../../lib/solana';
 import { bbxMetadata } from '../token/metadata';
 
-const MINT = process.env.NEXT_PUBLIC_BRICK_TOKEN_MINT || bbxMetadata.mint;
+const MINT = bbxMetadata.mint;
 
 export default function PerksPage() {
   const [pubkey, setPubkey] = useState<string | null>(null);
