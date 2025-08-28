@@ -14,6 +14,7 @@ export default function NavBar() {
     >
       <Link href="/">Home</Link>
       <Link href="/token">Token</Link>
+      <Link href="/perks">Perks</Link>
       <Link href="/live">Live</Link>
       <Link href="/social">Social</Link>
       <Link href="/shop">Shop</Link>
