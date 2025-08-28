@@ -1,5 +1,3 @@
-/* app/globals.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 html, body {
@@ -18,10 +16,13 @@ a {
 }
 
 a:hover {
-  color: #E0474C; /* Brick red accent for hover */
+  color: #E0474C; /* brick red accent */
 }
 
 nav {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
   backdrop-filter: blur(10px);
   background-color: rgba(31, 31, 31, 0.85);
   border-bottom: 1px solid #272727;
