@@ -1,4 +1,5 @@
 import './globals.css';
+import NavBar from '@/components/NavBar';
 
 export const metadata = {
   title: 'BBX',
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }
