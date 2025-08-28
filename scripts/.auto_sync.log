@@ -1,0 +1,10 @@
+nohup: ignoring input
+[cursor/sync-local-changes-to-github-00b4 5c017ac] chore(sync): auto-sync at 2025-08-21T07:31:01Z
+ 2 files changed, 2 insertions(+)
+ create mode 100644 scripts/.auto_sync.log
+ create mode 100644 scripts/.auto_sync.pid
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To https://github.com/Dayfah/BrickBox
+   3b942b9..5c017ac  cursor/sync-local-changes-to-github-00b4 -> cursor/sync-local-changes-to-github-00b4
+branch 'cursor/sync-local-changes-to-github-00b4' set up to track 'origin/cursor/sync-local-changes-to-github-00b4'.
