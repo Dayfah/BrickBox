@@ -12,6 +12,9 @@ export default {
     }
 
     const sig = request.headers.get('stripe-signature');
+    if (!sig) {
+      return new Response('Missing stripe-signature header', { status: 400 });
+    }
     const payload = await request.text();
 
     try {
@@ -35,6 +38,9 @@ export default {
 }
 
 function parseStripeSignature(header) {
+  if (!header) {
+    throw new Error('Missing Stripe signature header');
+  }
   const parts = header.split(',');
   const timestampPart = parts.find(p => p.startsWith('t='));
   const sigPart = parts.find(p => p.startsWith('v1='));
