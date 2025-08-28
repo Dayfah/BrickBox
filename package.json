@@ -2,14 +2,18 @@
   "name": "brickbox-bbx",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
-    "postinstall": "tailwindcss -v >/dev/null 2>&1 || echo ''"
+    "postinstall": "tailwindcss -v >/dev/null 2>&1 || echo ''",
+    "test": "npm run test:node && npm run test:py",
+    "test:node": "node --test",
+    "test:py": "pytest"
   },
   "dependencies": {
-    "next": "14.0.3",
+    "next": "14.2.32",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "stripe": "^14.22.0"
