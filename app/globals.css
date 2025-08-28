@@ -21,7 +21,7 @@ a:hover {
   color: #E0474C; /* Brick red accent for hover */
 }
 
-nav {
+.navbar {
   display: flex;
   gap: 1rem;
   padding: 1rem;

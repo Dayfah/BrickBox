@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function NavBar() {
   return (
-    <nav>
+    <nav className="navbar">
       <Link href="/">Home</Link>
       <Link href="/token">Token</Link>
       <Link href="/live">Live</Link>
