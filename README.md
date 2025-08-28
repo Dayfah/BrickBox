@@ -7,6 +7,16 @@ The visual identity uses the base64-encoded icon in `assets/brickbox-icon.b64`. 
 ## Tech Stack Overview
 See [STACK.md](STACK.md) for the MVP tooling and the path to scale.
 
+## Live Deployment
+
+The project is deployed via Vercel at [https://brick-box-d3hx.vercel.app](https://brick-box-d3hx.vercel.app).
+The Twitch embed now detects the current hostname so preview deployments and custom domains work without code changes.
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and supply your own values. The token mint is configured through `NEXT_PUBLIC_BRICK_TOKEN_MINT`;
+never commit private keys or real wallet secrets to version control.
+
 ## Docker
 
 Build the multi-stage image and run the server locally:
