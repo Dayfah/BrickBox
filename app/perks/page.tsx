@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useState } from 'react';
-import { PhantomConnect } from '../../components/wallet/PhantomConnect';
-import { hasMint } from '../../lib/solana';
-import { bbxMetadata } from '../token/metadata';
+import { useCallback, useEffect, useState } from "react";
+import { PhantomConnect } from "../../components/wallet/PhantomConnect";
+import { hasMint } from "../../lib/solana";
+import { bbxMetadata } from "../token/metadata";
 
 const MINT = bbxMetadata.mint;
 
@@ -28,13 +28,19 @@ export default function PerksPage() {
   return (
     <div className="card">
       <h2>Perks (Token-gated)</h2>
-      <div style={{display:'flex', gap:12, alignItems:'center', marginTop: 8}}>
+      <div
+        style={{ display: "flex", gap: 12, alignItems: "center", marginTop: 8 }}
+      >
         <PhantomConnect onConnected={onConnected} />
       </div>
-      {pubkey && <div className="small" style={{marginTop:8}}>Checking holdings on-chain…</div>}
+      {pubkey && (
+        <div className="small" style={{ marginTop: 8 }}>
+          Checking holdings on-chain…
+        </div>
+      )}
       {checking && <div className="small">Verifying BRICK balance…</div>}
       {isHolder === true && (
-        <div style={{marginTop:12}}>
+        <div style={{ marginTop: 12 }}>
           <div className="card">
             <h3>Welcome, BRICK Holder!</h3>
             <ul>
@@ -46,14 +52,15 @@ export default function PerksPage() {
         </div>
       )}
       {isHolder === false && (
-        <div style={{marginTop:12}}>
+        <div style={{ marginTop: 12 }}>
           <div className="card">
             <h3>Perks locked</h3>
-            <p className="small">You’ll need at least 1 BRICK to unlock these.</p>
+            <p className="small">
+              You’ll need at least 1 BRICK to unlock these.
+            </p>
           </div>
         </div>
       )}
     </div>
   );
 }
-

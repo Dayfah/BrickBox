@@ -1,12 +1,18 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 declare global {
-  interface Window { solana?: any; }
+  interface Window {
+    solana?: any;
+  }
 }
 
-export function PhantomConnect({ onConnected }: { onConnected: (pubkey: string) => void }) {
+export function PhantomConnect({
+  onConnected,
+}: {
+  onConnected: (pubkey: string) => void;
+}) {
   const [hasPhantom, setHasPhantom] = useState(false);
   const [pubkey, setPubkey] = useState<string | null>(null);
   const [connecting, setConnecting] = useState(false);
@@ -14,13 +20,16 @@ export function PhantomConnect({ onConnected }: { onConnected: (pubkey: string) 
   useEffect(() => {
     setHasPhantom(!!window.solana?.isPhantom);
     if (window.solana?.isPhantom) {
-      window.solana.connect({ onlyIfTrusted: true }).then((res: any) => {
-        if (res?.publicKey) {
-          const key = String(res.publicKey.toString());
-          setPubkey(key);
-          onConnected(key);
-        }
-      }).catch(()=>{});
+      window.solana
+        .connect({ onlyIfTrusted: true })
+        .then((res: any) => {
+          if (res?.publicKey) {
+            const key = String(res.publicKey.toString());
+            setPubkey(key);
+            onConnected(key);
+          }
+        })
+        .catch(() => {});
     }
   }, [onConnected]);
 
@@ -33,7 +42,7 @@ export function PhantomConnect({ onConnected }: { onConnected: (pubkey: string) 
       onConnected(key);
     } catch (e) {
       console.error(e);
-      alert('Could not connect to Phantom.');
+      alert("Could not connect to Phantom.");
     } finally {
       setConnecting(false);
     }
@@ -41,14 +50,27 @@ export function PhantomConnect({ onConnected }: { onConnected: (pubkey: string) 
 
   if (!hasPhantom) {
     return (
-      <a className="btn" href="https://phantom.app/download" target="_blank" rel="noreferrer">
+      <a
+        className="btn"
+        href="https://phantom.app/download"
+        target="_blank"
+        rel="noreferrer"
+      >
         Install Phantom
       </a>
     );
   }
 
-  if (pubkey) return <span className="small">Wallet: {pubkey.slice(0,4)}…{pubkey.slice(-4)}</span>;
+  if (pubkey)
+    return (
+      <span className="small">
+        Wallet: {pubkey.slice(0, 4)}…{pubkey.slice(-4)}
+      </span>
+    );
 
-  return <button className="btn" onClick={connectNow} disabled={connecting}>{connecting ? 'Connecting…' : 'Connect Phantom'}</button>;
+  return (
+    <button className="btn" onClick={connectNow} disabled={connecting}>
+      {connecting ? "Connecting…" : "Connect Phantom"}
+    </button>
+  );
 }
-
