@@ -14,3 +14,21 @@ Verifies a Solana transaction that transfers >= MIN_BBX of the BBX mint to your 
    npm i
    npm run dev
    ```
+
+## Cloudflare Secrets
+Store the following values using `wrangler secret put` before deploying:
+
+- `RPC_URL`
+- `MINT_ADDRESS`
+- `TREASURY_ADDRESS`
+- `SUPABASE_URL`
+- `SUPABASE_PROJECT_URL`
+- `SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_KEY`
+
+Example:
+
+```bash
+wrangler secret put RPC_URL
+wrangler secret put SUPABASE_ANON_KEY
+```
