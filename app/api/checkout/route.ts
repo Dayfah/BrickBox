@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2023-10-16" });
-
 export async function POST(req: Request) {
   try {
     const { plan, email } = await req.json();
@@ -12,6 +10,12 @@ export async function POST(req: Request) {
 
     const priceId = plan === "yearly" ? process.env.STRIPE_PRICE_YEARLY : process.env.STRIPE_PRICE_MONTHLY;
     if (!priceId) return NextResponse.json({ error: "Missing price" }, { status: 500 });
+
+    const secretKey = process.env.STRIPE_SECRET_KEY;
+    if (!secretKey) {
+      return NextResponse.json({ error: "STRIPE_SECRET_KEY not configured" }, { status: 500 });
+    }
+    const stripe = new Stripe(secretKey, { apiVersion: "2023-10-16" });
 
     const siteUrl = process.env.SITE_URL || "http://localhost:3000";
     const session = await stripe.checkout.sessions.create({
