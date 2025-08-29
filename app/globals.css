@@ -1,34 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  color: #e1e1e1;
-  background: linear-gradient(145deg, #0d1117 0%, #1f1f1f 100%);
-  font-family: 'Poppins', sans-serif;
-}
-
-a {
-  color: #e1e1e1;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #E0474C; /* brick red accent */
-}
-
-nav {
-  display: flex;
-  gap: 16px;
-  padding: 16px;
-  backdrop-filter: blur(10px);
-  background-color: rgba(31, 31, 31, 0.85);
-  border-bottom: 1px solid #272727;
-}
-
-section {
-  max-width: 960px;
-  margin: 0 auto;
+@layer base {
+  body {
+    @apply bg-bbxDark text-bbxCream font-sans;
+    font-family: 'Poppins', sans-serif;
+  }
 }

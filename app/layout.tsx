@@ -1,21 +1,23 @@
 import "./globals.css";
-import NavBar from "../components/NavBar";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "BrickBox",
-  description: "Comic/Manga Collector hub — coming soon 🚀",
+  description: "A modern vault for comic collectors with merch and BBX Token.",
+  icons: [{ rel: "icon", url: process.env.BBX_ICON || "/favicon.ico" }],
+  other: {
+    "bbx-metadata": process.env.BBX_METADATA || "",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex min-h-screen flex-col bg-bbxDark text-bbxCream">
         <NavBar />
-        {children}
+        <main className="flex-1 p-6">{children}</main>
+        <Footer />
       </body>
     </html>
   );
